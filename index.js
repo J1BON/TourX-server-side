@@ -31,6 +31,17 @@ async function run() {
       res.send(pakages);
     });
 
+    // Post Pakage API
+
+    app.post("/pakages", async (req, res) => {
+      const pakage = req.body;
+      console.log("hit the post api", pakage);
+
+      const result = await pakageCollection.insertOne(pakage);
+      console.log(result);
+      res.json(result);
+    });
+
     // GET Single Service
     app.get("/pakages/:id", async (req, res) => {
       const id = req.params.id;
